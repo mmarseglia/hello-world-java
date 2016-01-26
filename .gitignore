@@ -12,4 +12,7 @@
 hs_err_pid*
 
 # ivy cache
-cache/*
+cache
+
+# gradle
+.gradle
