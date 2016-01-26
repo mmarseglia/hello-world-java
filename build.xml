@@ -1,0 +1,33 @@
+<project name="hello-world-java" default="dist" basedir=".">
+  <description>
+    hello-world-java ant buildfile
+  </description>
+  <!-- global properties -->
+  <property name="src" location="src/" />
+  <property name="dist" location="dist/" />
+  <property name="build" location="build/" />
+
+  <target name="init">
+    <!-- create timestamp -->
+    <tstamp />
+    <!-- create build directory -->
+    <mkdir dir="${build}" />
+  </target>
+
+  <target name="compile" depends="init" description="compile source">
+    <javac srcdir="${src}" destdir="${build}" />
+  </target>
+
+  <target name="dist" depends="compile" description="create dist">
+    <mkdir dir="${dist}/lib" />
+
+    <!-- put the contents of ${build} into the jar file -->
+    <jar jarfile="${dist}/lib/hello-world-java.jar" basedir="${build}" />
+  </target>
+
+  <target name="clean" description="clean up">
+    <delete dir="${build}" />
+    <delete dir="${dist}" />
+  </target>
+
+</project>
